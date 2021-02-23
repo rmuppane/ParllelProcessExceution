@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.omg.org/bpmn20" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_X17QQHXiEeuiyZoOrXrOXA" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.omg.org/bpmn20" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_bcjYsHXiEeuiyZoOrXrOXA" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
   <bpmn2:itemDefinition id="_listOfActionsItem" structureRef="java.util.ArrayList"/>
   <bpmn2:itemDefinition id="_usersItem" structureRef="java.util.ArrayList"/>
+  <bpmn2:itemDefinition id="_81357475-5530-45AD-B5F5-91E742126E75_multiInstanceItemType_user" structureRef="String"/>
   <bpmn2:itemDefinition id="_8AE31A5D-BCC5-452B-B77C-A44EF71CD59E_multiInstanceItemType_subname" structureRef="String"/>
   <bpmn2:process id="ParllelProcessExceution.parllel" drools:packageName="com.temenos.parllelprocessexceution" drools:version="1.0" drools:adHoc="false" name="parllel" isExecutable="true" processType="Public">
     <bpmn2:extensionElements>
@@ -66,11 +67,23 @@ kcontext.setVariable("users",users);]]></bpmn2:script>
       </bpmn2:extensionElements>
       <bpmn2:incoming>_2D0A867C-B6B0-4185-9CC0-DBEEBC106AB1</bpmn2:incoming>
       <bpmn2:outgoing>_7325BDA7-5524-4958-A6AD-965F0E01ADC7</bpmn2:outgoing>
-      <bpmn2:ioSpecification id="_X17QQXXiEeuiyZoOrXrOXA">
-        <bpmn2:inputSet id="_X17QQnXiEeuiyZoOrXrOXA"/>
-        <bpmn2:outputSet id="_X17QQ3XiEeuiyZoOrXrOXA"/>
+      <bpmn2:ioSpecification id="_bcjYsXXiEeuiyZoOrXrOXA">
+        <bpmn2:dataInput id="_81357475-5530-45AD-B5F5-91E742126E75_IN_COLLECTIONInputX" itemSubjectRef="_usersItem" name="IN_COLLECTION"/>
+        <bpmn2:dataInput id="_81357475-5530-45AD-B5F5-91E742126E75_userInputX" itemSubjectRef="_81357475-5530-45AD-B5F5-91E742126E75_multiInstanceItemType_user" name="user"/>
+        <bpmn2:inputSet id="_bcjYsnXiEeuiyZoOrXrOXA">
+          <bpmn2:dataInputRefs>_81357475-5530-45AD-B5F5-91E742126E75_IN_COLLECTIONInputX</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_81357475-5530-45AD-B5F5-91E742126E75_userInputX</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet id="_bcjYs3XiEeuiyZoOrXrOXA"/>
       </bpmn2:ioSpecification>
-      <bpmn2:multiInstanceLoopCharacteristics id="_X17QRHXiEeuiyZoOrXrOXA"/>
+      <bpmn2:dataInputAssociation id="_bcjYtHXiEeuiyZoOrXrOXA">
+        <bpmn2:sourceRef>users</bpmn2:sourceRef>
+        <bpmn2:targetRef>_81357475-5530-45AD-B5F5-91E742126E75_IN_COLLECTIONInputX</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:multiInstanceLoopCharacteristics id="_bcjYtXXiEeuiyZoOrXrOXA">
+        <bpmn2:loopDataInputRef>_81357475-5530-45AD-B5F5-91E742126E75_IN_COLLECTIONInputX</bpmn2:loopDataInputRef>
+        <bpmn2:inputDataItem xsi:type="bpmn2:tDataInput" id="user" itemSubjectRef="_81357475-5530-45AD-B5F5-91E742126E75_multiInstanceItemType_user" name="user"/>
+      </bpmn2:multiInstanceLoopCharacteristics>
       <bpmn2:sequenceFlow id="_343558E9-4FA7-4018-BDA5-2C54D2AAAAE7" sourceRef="_8AE31A5D-BCC5-452B-B77C-A44EF71CD59E" targetRef="_1FE59265-DEA8-4B17-A9EF-5B3A92793B29">
         <bpmn2:extensionElements>
           <drools:metaData name="isAutoConnection.source">
@@ -102,20 +115,20 @@ kcontext.setVariable("users",users);]]></bpmn2:script>
         </bpmn2:extensionElements>
         <bpmn2:incoming>_A3C04E00-D9D0-4B58-A26D-61650C179E33</bpmn2:incoming>
         <bpmn2:outgoing>_343558E9-4FA7-4018-BDA5-2C54D2AAAAE7</bpmn2:outgoing>
-        <bpmn2:ioSpecification id="_X17QRXXiEeuiyZoOrXrOXA">
+        <bpmn2:ioSpecification id="_bcjYtnXiEeuiyZoOrXrOXA">
           <bpmn2:dataInput id="_8AE31A5D-BCC5-452B-B77C-A44EF71CD59E_IN_COLLECTIONInputX" itemSubjectRef="_listOfActionsItem" name="IN_COLLECTION"/>
           <bpmn2:dataInput id="_8AE31A5D-BCC5-452B-B77C-A44EF71CD59E_subnameInputX" itemSubjectRef="_8AE31A5D-BCC5-452B-B77C-A44EF71CD59E_multiInstanceItemType_subname" name="subname"/>
-          <bpmn2:inputSet id="_X17QRnXiEeuiyZoOrXrOXA">
+          <bpmn2:inputSet id="_bcjYt3XiEeuiyZoOrXrOXA">
             <bpmn2:dataInputRefs>_8AE31A5D-BCC5-452B-B77C-A44EF71CD59E_IN_COLLECTIONInputX</bpmn2:dataInputRefs>
             <bpmn2:dataInputRefs>_8AE31A5D-BCC5-452B-B77C-A44EF71CD59E_subnameInputX</bpmn2:dataInputRefs>
           </bpmn2:inputSet>
-          <bpmn2:outputSet id="_X17QR3XiEeuiyZoOrXrOXA"/>
+          <bpmn2:outputSet id="_bcjYuHXiEeuiyZoOrXrOXA"/>
         </bpmn2:ioSpecification>
-        <bpmn2:dataInputAssociation id="_X17QSHXiEeuiyZoOrXrOXA">
+        <bpmn2:dataInputAssociation id="_bcjYuXXiEeuiyZoOrXrOXA">
           <bpmn2:sourceRef>listOfActions</bpmn2:sourceRef>
           <bpmn2:targetRef>_8AE31A5D-BCC5-452B-B77C-A44EF71CD59E_IN_COLLECTIONInputX</bpmn2:targetRef>
         </bpmn2:dataInputAssociation>
-        <bpmn2:multiInstanceLoopCharacteristics id="_X17QSXXiEeuiyZoOrXrOXA">
+        <bpmn2:multiInstanceLoopCharacteristics id="_bcjYunXiEeuiyZoOrXrOXA">
           <bpmn2:loopDataInputRef>_8AE31A5D-BCC5-452B-B77C-A44EF71CD59E_IN_COLLECTIONInputX</bpmn2:loopDataInputRef>
           <bpmn2:inputDataItem xsi:type="bpmn2:tDataInput" id="subname" itemSubjectRef="_8AE31A5D-BCC5-452B-B77C-A44EF71CD59E_multiInstanceItemType_subname" name="subname"/>
         </bpmn2:multiInstanceLoopCharacteristics>
@@ -160,8 +173,8 @@ kcontext.setVariable("users",users);]]></bpmn2:script>
       </bpmn2:subProcess>
     </bpmn2:subProcess>
   </bpmn2:process>
-  <bpmndi:BPMNDiagram id="_X17QSnXiEeuiyZoOrXrOXA">
-    <bpmndi:BPMNPlane id="_X17QS3XiEeuiyZoOrXrOXA" bpmnElement="ParllelProcessExceution.parllel">
+  <bpmndi:BPMNDiagram id="_bcjYu3XiEeuiyZoOrXrOXA">
+    <bpmndi:BPMNPlane id="_bcjYvHXiEeuiyZoOrXrOXA" bpmnElement="ParllelProcessExceution.parllel">
       <bpmndi:BPMNShape id="shape__81357475-5530-45AD-B5F5-91E742126E75" bpmnElement="_81357475-5530-45AD-B5F5-91E742126E75">
         <dc:Bounds height="263.0" width="782.0" x="360.0" y="147.0"/>
       </bpmndi:BPMNShape>
@@ -222,19 +235,19 @@ kcontext.setVariable("users",users);]]></bpmn2:script>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
-  <bpmn2:relationship id="_X17QTHXiEeuiyZoOrXrOXA" type="BPSimData">
+  <bpmn2:relationship id="_bcjYvXXiEeuiyZoOrXrOXA" type="BPSimData">
     <bpmn2:extensionElements>
       <bpsim:BPSimData>
         <bpsim:Scenario xsi:type="bpsim:Scenario" id="default" name="Simulationscenario">
           <bpsim:ScenarioParameters xsi:type="bpsim:ScenarioParameters"/>
-          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_924EC2D1-1377-4989-9323-5CDC5DE3F8F7" id="_X17QTXXiEeuiyZoOrXrOXA">
+          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_924EC2D1-1377-4989-9323-5CDC5DE3F8F7" id="_bcjYvnXiEeuiyZoOrXrOXA">
             <bpsim:TimeParameters xsi:type="bpsim:TimeParameters">
               <bpsim:ProcessingTime xsi:type="bpsim:Parameter">
                 <bpsim:NormalDistribution mean="0.0" standardDeviation="0.0"/>
               </bpsim:ProcessingTime>
             </bpsim:TimeParameters>
           </bpsim:ElementParameters>
-          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_F7704627-D230-4359-8460-319C8363FB3E" id="_X17QTnXiEeuiyZoOrXrOXA">
+          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_F7704627-D230-4359-8460-319C8363FB3E" id="_bcjYv3XiEeuiyZoOrXrOXA">
             <bpsim:TimeParameters xsi:type="bpsim:TimeParameters">
               <bpsim:ProcessingTime xsi:type="bpsim:Parameter">
                 <bpsim:NormalDistribution mean="0.0" standardDeviation="0.0"/>
@@ -257,7 +270,7 @@ kcontext.setVariable("users",users);]]></bpmn2:script>
         </bpsim:Scenario>
       </bpsim:BPSimData>
     </bpmn2:extensionElements>
-    <bpmn2:source>_X17QQHXiEeuiyZoOrXrOXA</bpmn2:source>
-    <bpmn2:target>_X17QQHXiEeuiyZoOrXrOXA</bpmn2:target>
+    <bpmn2:source>_bcjYsHXiEeuiyZoOrXrOXA</bpmn2:source>
+    <bpmn2:target>_bcjYsHXiEeuiyZoOrXrOXA</bpmn2:target>
   </bpmn2:relationship>
 </bpmn2:definitions>
